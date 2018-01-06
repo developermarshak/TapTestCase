@@ -13,15 +13,15 @@ class CreateClicksTable extends Migration
      */
     public function up()
     {
-        Schema::create('clicks', function (Blueprint $table) {
+        Schema::create('click', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('ua', 1000);
             $table->string('ip');
             $table->string('referrer', 1000);
             $table->string('param1', 1000);
-            $table->string('param2', 1000);
-            $table->integer('error');
-            $table->boolean('bad_domain');
+            $table->string('param2', 1000)->default('');
+            $table->integer('error')->default(0);
+            $table->boolean('bad_domain')->default(false);
 
             $table->primary('id');
 
@@ -41,6 +41,6 @@ class CreateClicksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clicks');
+        Schema::dropIfExists('click');
     }
 }
