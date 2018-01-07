@@ -86,17 +86,9 @@ class ClickController extends Controller
         $click = Click::query()->find($clickId);
 
         if( is_null($click) ){
-            $data = [
-                'error' => 'Click not found'
-            ];
-            return new Response($data, 404);
+            return new Response('Click not found', 404);
         }
-        $data = [
-            'message' => 'You referrer click is success',
-            'data'    => $click->toArray()
-        ];
-
-        return new Response($data, 200);
+        return view('success', ['data' => $click->toArray()]);
     }
 
     /**
@@ -108,10 +100,7 @@ class ClickController extends Controller
         $click = Click::query()->find($clickId);
 
         if( is_null($click) ){
-            $data = [
-                'error' => 'Click not found'
-            ];
-            return new Response($data, 404);
+            return new Response('Click not found', 404);
         }
         /**
          * @var Click $click
@@ -139,7 +128,7 @@ class ClickController extends Controller
             'data'    => $click->toArray()
         ];
 
-        return new Response($data, 200);
+        return view('error', $data);
     }
 
     /**
