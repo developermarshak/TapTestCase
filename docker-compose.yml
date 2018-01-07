@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      dockerfile: .docker/nginx
+      context: .
+    ports:
+      - "85:80"
+    volumes:
+      - "./src/:/var/www/html"
+    networks:
+      - internal
+  fpm:
+    build:
+      dockerfile: .docker/php-fpm
+      context: .
+    volumes:
+      - "./src/:/var/www/html"
+    networks:
+      internal:
+        aliases:
+          - fpm
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+    networks:
+      internal:
+        aliases:
+          - mysql
+
+networks:
+  internal:
