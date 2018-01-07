@@ -65,13 +65,13 @@ class ClickController extends Controller
         $click = Click::query()->find($click->id);
 
         if($click->bad_domain || $click->error){
-            return $this->emptyHeaderResponse(204, [
-                'location' => "/error/".$click->id
+            return $this->emptyHeaderResponse(301, [
+                'Location' => "/error/".$click->id
             ]);
         }
         else{
-            $response = $this->emptyHeaderResponse(201, [
-                'location' => "/success/".$click->id
+            $response = $this->emptyHeaderResponse(301, [
+                'Location' => "/success/".$click->id
             ]);
         }
         return $response;

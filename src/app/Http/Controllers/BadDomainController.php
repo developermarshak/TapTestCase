@@ -47,7 +47,7 @@ class BadDomainController extends Controller
             $this->emptyHeaderResponse(500);
         }
         return $this->emptyHeaderResponse(201, [
-            'location' => '/bad_domains/'.$badDomain->id
+            'Location' => '/bad_domains/'.$badDomain->id
         ]);
     }
 

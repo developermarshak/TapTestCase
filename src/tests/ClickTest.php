@@ -14,7 +14,7 @@ class ClickTest extends TestCase
         $this->get('/click/?param1='.$param1, [
             'User-Agent' => $userAgent,
             'Referer'    => $referer
-        ])->seeStatusCode(201);
+        ])->seeStatusCode(301);
 
         $this->seeInDatabase('click', [
             'ua'       => $userAgent,
@@ -48,7 +48,7 @@ class ClickTest extends TestCase
         $this->get('/click/?param1='.$param1, [
             'User-Agent' => $userAgent,
             'Referer'    => $referer
-        ])->seeStatusCode(204);
+        ])->seeStatusCode(301);
 
         $this->assertEquals(Click::query()->count(), 1);
 
@@ -95,7 +95,7 @@ class ClickTest extends TestCase
         $this->get('/click/?param1='.$param1.'&param2='.$param2, [
             'user-agent' => $ua,
             'referer'    => $referer
-        ])->seeStatusCode(201);
+        ])->seeStatusCode(301);
 
         $this->assertEquals(Click::query()->count(), 2);
 
@@ -123,7 +123,7 @@ class ClickTest extends TestCase
         $this->get('/click/?param1='.$param1, [
             'user-agent' => $userAgent,
             'referer'    => $referer
-        ])->seeStatusCode(204);
+        ])->seeStatusCode(301);
 
         $this->assertEquals(Click::query()->count(), 1);
 
