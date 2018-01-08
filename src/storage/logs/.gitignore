@@ -1,2 +1,3 @@
 .gitignore
+lumen.log
 !.gitignore
