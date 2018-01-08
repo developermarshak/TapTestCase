@@ -1,23 +1,23 @@
-###Docker up
+##Docker up
 ```
 docker-compose build --pull
 docker-compose up -d
 ```
 
-###Install
+##Install
 ```
-docker-compose fpm bash
+docker-compose exec fpm bash
 composer install
 php artisan migrate
 ```
 
-###Run tests
+##Run tests
 ```
-docker-compose fpm bash
+docker-compose exec fpm bash
 ./vendor/bin/phpunit ./tests/
 ```
 
-###Entrypoints
+##Entrypoints
 ```
 http://localhost:85/
 http://localhost:85/bad_domains/
